@@ -99,7 +99,7 @@ runs:
         echo "key=verifa11y-browsers-${RUNNER_OS}-${RUNNER_ARCH}-${hash}" >> "$GITHUB_OUTPUT"
 
     - name: Restore browser
-      uses: actions/cache@v4
+      uses: actions/cache@v6
       with:
         path: ${{ runner.temp }}/verifa11y-browsers
         key: ${{ steps.key.outputs.key }}
