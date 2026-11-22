@@ -60,7 +60,7 @@ jobs:
             if (pick(a) !== pick(b)) console.log("::warning::benchmark differs from bench/codemod/metrics.json; re-run npm run bench:codemod and commit if this is intended");
             else console.log("matches the committed benchmark");
           '
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: bench-codemod
