@@ -273,6 +273,8 @@
         blobs[i].style.transform = `translate3d(${X.toFixed(1)}px, ${Y.toFixed(1)}px, 0)`;
       });
       if (dots) {
+        // The light that follows the mouse is dimmer than the ones that drift on their own
+        dots.style.setProperty("--a1", (1 - pull).toFixed(3));
         dots.style.setProperty("--x1", `${xs[0].toFixed(0)}px`); dots.style.setProperty("--y1", `${ys[0].toFixed(0)}px`);
         dots.style.setProperty("--x2", `${xs[1].toFixed(0)}px`); dots.style.setProperty("--y2", `${ys[1].toFixed(0)}px`);
       }
