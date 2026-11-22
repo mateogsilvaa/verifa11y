@@ -221,6 +221,11 @@
   const ambient = document.querySelector(".ambient");
   if (ambient && motion) {
     const blobs = [...ambient.children];
+    const dots = document.querySelector(".dotlight");
+    // On a mouse, the first light leans toward the pointer; on touch it only follows the scroll.
+    const fine = matchMedia("(pointer: fine)");
+    let px = innerWidth * 0.3, py = innerHeight * 0.3, pull = 0, lastMove = -1e9;
+    addEventListener("pointermove", (e) => { if (fine.matches) { px = e.clientX; py = e.clientY; lastMove = performance.now(); } }, { passive: true });
     const word = document.querySelector(".foot-word");
     const lerp = (a, b, k) => a + (b - a) * k;
     let sp = 0;
@@ -253,17 +258,24 @@
         f = Math.min(1, Math.max(0, (H * 1.3 - r.top) / (H * 0.3 + r.height * 0.8)));
         f = f * f * (3 - 2 * f);
       }
-      const xs = [];
+      const xs = [], ys = [];
+      // Ease toward the pointer while it moves, and back to the drift when it rests
+      pull = lerp(pull, ms - lastMove < 2500 ? 0.55 : 0, 0.03);
       pts.forEach(([x, y], i) => {
         let X = x * W, Y = y * H;
+        if (i === 0 && pull > 0.001) { X = lerp(X, px, pull); Y = lerp(Y, py, pull); }
         if (r && f > 0) {
           const spread = [-0.26, 0.26, 0][i] * r.width + Math.sin(t * 0.4 + i * 2) * r.width * 0.12;
           X = lerp(X, r.left + r.width / 2 + spread, f * 0.9);
           Y = lerp(Y, r.top + r.height * 0.55, f * 0.9);
         }
-        xs.push(X);
+        xs.push(X); ys.push(Y);
         blobs[i].style.transform = `translate3d(${X.toFixed(1)}px, ${Y.toFixed(1)}px, 0)`;
       });
+      if (dots) {
+        dots.style.setProperty("--x1", `${xs[0].toFixed(0)}px`); dots.style.setProperty("--y1", `${ys[0].toFixed(0)}px`);
+        dots.style.setProperty("--x2", `${xs[1].toFixed(0)}px`); dots.style.setProperty("--y2", `${ys[1].toFixed(0)}px`);
+      }
       if (r && (f > 0 || lastGlow !== 0)) {
         word.style.setProperty("--glow", f.toFixed(3));
         word.style.setProperty("--ga", `${(((xs[0] - r.left) / r.width) * 100).toFixed(1)}%`);
@@ -375,7 +387,7 @@
     setTimeout(tick, 500);
   }
 
-  /* Logo strip: duplicate it once so the marquee loops without a seam ----- */
+  /* Logo strip: duplicate it once so the loop has no seam (the copy is hidden from assistive tech) */
   const mq = document.querySelector(".mq-list");
   if (mq) for (const li of [...mq.children]) { const c = li.cloneNode(true); c.setAttribute("aria-hidden", "true"); mq.append(c); }
 

@@ -16,6 +16,8 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="ambient" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+<div class="dotlight" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
 
 <svg width="0" height="0" class="defs" aria-hidden="true" focusable="false">
   <!-- brand-icons -->
@@ -35,7 +37,7 @@
 
 <header class="site-header">
   <div class="bar">
-    <a class="brand" href="#top"><svg class="brand-mark" width="22" height="22" aria-hidden="true"><use href="#mark"/></svg><span>verifa<b>11</b>y</span></a>
+    <a class="brand" href="#top"><svg class="brand-mark" width="22" height="22" aria-hidden="true"><use href="#mark"/></svg><span translate="no">verifa<b>11</b>y</span></a>
     <nav aria-label="Main">
       <ul class="nav-links">
         <li><a href="#how">How it works</a></li>
@@ -55,12 +57,11 @@
 <main id="main">
 
 <section class="hero" id="top" aria-labelledby="hero-title">
-  <div class="glow" aria-hidden="true"></div>
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow"><svg class="hero-mark" viewBox="0 0 64 64" width="34" height="34" aria-hidden="true" focusable="false"><rect class="m-ring" x="7" y="7" width="50" height="50" rx="15" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="7.6 6" stroke-linecap="round"/><path class="m-check" d="M21 32.5l8 8 15-17" fill="none" stroke="currentColor" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/></svg> Open source · runs on your machine</p>
-      <h1 id="hero-title">Accessibility fixes that <span class="hl">prove themselves.</span></h1>
-      <p class="lede">verifa11y finds WCAG violations in your HTML, writes the smallest fix for each and re-checks the page in a real browser. If a fix only silences the checker, it's thrown out, and you're told why.</p>
+      <svg class="hero-mark" viewBox="0 0 64 64" width="34" height="34" aria-hidden="true" focusable="false"><rect class="m-ring" x="7" y="7" width="50" height="50" rx="15" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="7.6 6" stroke-linecap="round"/><path class="m-check" d="M21 32.5l8 8 15-17" fill="none" stroke="currentColor" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/></svg>
+      <h1 id="hero-title">Accessibility fixes that <span class="hl">prove themselves</span>.</h1>
+      <p class="lede"><span translate="no">verifa11y</span> finds the WCAG violations in your HTML, writes the smallest fix for each one and re-checks the page in a real browser. It drops any fix that only silences the checker, and tells you why.</p>
       <div class="actions">
         <a class="btn btn-light try" href="#install" data-try>
           <span>Try it in</span>
@@ -79,6 +80,7 @@
         </a>
         <a class="btn btn-ghost" href="#how">How it works</a>
       </div>
+      <p class="hero-meta">Open source (Apache-2.0). Runs on your machine. No account, no telemetry.</p>
     </div>
 
     <figure class="tour" aria-labelledby="tour-cap">
@@ -102,7 +104,7 @@
 </section>
 
 <section class="everywhere" aria-labelledby="everywhere-title">
-  <h2 id="everywhere-title" class="ew-title">Works wherever your agent does</h2>
+  <div class="ew-head"><h2 id="everywhere-title" class="ew-title">Works wherever your agent does</h2></div>
   <div class="marquee">
     <ul class="mq-list">
       <li><svg aria-hidden="true"><use href="#lg-claudecode"/></svg>Claude Code</li>
@@ -128,23 +130,35 @@
 </section>
 
 <section class="scan done" id="how" aria-labelledby="how-title">
-  <div class="wrap scan-head" data-reveal>
-    <p class="label">How it works</p>
-    <h2 id="how-title">Scroll, and watch verifa11y review a page.</h2>
-    <p class="sub">The demo page from the repository, and verifa11y's report on four of its bugs: what is wrong, the fix it tried, and whether that fix survived the checks.</p>
+  <div class="wrap scan-head">
+    <h2 id="how-title">Watch it check a website</h2>
+    <p class="sub">This small community-garden site has four problems that get in the way of people who use a screen reader or only a keyboard. As you scroll, <span translate="no">verifa11y</span> finds each one, tries a fix, and keeps the fix only if it holds up in a real browser.</p>
+    <ol class="scan-steps">
+      <li><b>Finds the problem</b> and the line of code behind it</li>
+      <li><b>Writes the smallest fix</b> it can</li>
+      <li><b>Tests the fix in a browser</b>, then keeps it or refuses it, and says why</li>
+    </ol>
   </div>
   <div class="scan-track">
     <div class="scan-pin">
       <div class="wrap">
         <div class="scan-frame">
           <div class="sf-site" aria-hidden="true">
-            <div class="sf-bar sp-chrome"><i></i><i></i><i></i><span>demo/before/index.html</span></div>
+            <div class="sf-bar sp-chrome"><i></i><i></i><i></i><span>riverside-garden.org</span></div>
             <div class="site">
               <div class="site-nav">
                 <span class="site-logo"><svg viewBox="0 0 20 20" width="18" height="18"><path d="M10 18c-4.5 0-6.5-3.2-6.5-6.4C3.5 7.2 7.6 3.8 15.8 2.5c0 7.2-1.6 15.5-5.8 15.5z" fill="#2f6f3e"/><path d="M6.5 15.5c2-3.5 4.5-6 8-8.5" stroke="#cfe6d2" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg>Riverside Garden</span>
                 <span class="sp-el site-links" data-n="1" data-ok="1"><span>Plots</span><span>Events</span></span>
               </div>
               <div class="site-hero">
+                <svg class="site-art" viewBox="0 0 480 120" preserveAspectRatio="xMidYMid slice">
+                  <rect width="480" height="120" fill="#e3eee6"/>
+                  <circle cx="404" cy="30" r="15" fill="#f2cf6b"/>
+                  <path d="M0 70 C80 52 150 58 230 66 S390 74 480 58 V120 H0Z" fill="#c9dcc6"/>
+                  <path d="M0 92 C90 80 170 98 260 90 S410 80 480 88 V104 C400 96 320 110 250 106 S80 98 0 108Z" fill="#9fc3d8"/>
+                  <g fill="#6f9a5f"><rect x="34" y="74" width="54" height="12" rx="3"/><rect x="100" y="72" width="54" height="12" rx="3"/><rect x="166" y="74" width="54" height="12" rx="3"/><rect x="300" y="70" width="54" height="12" rx="3"/><rect x="366" y="68" width="54" height="12" rx="3"/></g>
+                  <g fill="#3f7a4a"><circle cx="46" cy="74" r="5"/><circle cx="62" cy="73" r="6"/><circle cx="78" cy="74" r="4.5"/><circle cx="118" cy="71" r="5.5"/><circle cx="138" cy="72" r="4.5"/><circle cx="182" cy="73" r="6"/><circle cx="204" cy="74" r="4.5"/><circle cx="316" cy="69" r="5"/><circle cx="336" cy="68" r="6"/><circle cx="384" cy="67" r="5.5"/><circle cx="404" cy="68" r="4.5"/></g>
+                </svg>
                 <p class="site-kicker">Community garden</p>
                 <p class="site-h1">Grow your own food by the river</p>
                 <p class="site-lede">32 plots, shared tools, and a weekly compost day.</p>
@@ -157,44 +171,45 @@
                 </div>
                 <div class="site-form"><span class="site-input">Email address</span><span class="sp-el site-btn" data-n="4" data-ok="1">Join the waitlist</span></div>
               </div>
-              <div class="scan-line"><span>reviewing</span></div>
+              <p class="site-foot">Riverside Community Garden is run by volunteers.</p>
+              <div class="scan-line"><span>checking</span></div>
             </div>
           </div>
           <div class="sf-report">
             <div class="sf-bar sf-title">
               <svg width="16" height="16" aria-hidden="true"><use href="#mark"/></svg>
-              <span>Report</span>
-              <span class="sf-count"><b data-hud="ok">3</b> fixed · <b class="no" data-hud="no">1</b> rejected</span>
+              <span>What <span translate="no">verifa11y</span> found</span>
+              <span class="sf-count"><b data-hud="ok">3</b> fixed · <b class="no" data-hud="no">1</b> refused</span>
             </div>
             <div class="hud-bar" aria-hidden="true"><span></span></div>
             <ol class="findings">
               <li class="finding" data-n="1" data-ok="1">
                 <span class="f-n" aria-hidden="true">1</span>
-                <p class="n-rule">The menu has a misspelled role <em>WCAG 4.1.2 · line 19</em></p>
-                <p class="n-why">Screen readers can't announce it as navigation.</p>
-                <p class="n-diff"><span class="d-del">role="navigaton"</span> <span class="arr" aria-hidden="true">→</span> <span class="d-add">role="navigation"</span></p>
-                <p class="n-verdict ok">✓ Fixed: passed all six checks</p>
+                <p class="n-rule">The menu isn't recognised as a menu</p>
+                <p class="n-why">Screen reader users hear two links with no sign that they are the site's main navigation.</p>
+                <p class="n-diff">Fix: a typo in the code, <span class="d-del">navigaton</span> <span class="arr" aria-hidden="true">→</span> <span class="d-add">navigation</span> <em>WCAG 4.1.2</em></p>
+                <p class="n-verdict ok">✓ Fixed. It passed all six checks.</p>
               </li>
               <li class="finding" data-n="2" data-ok="1">
                 <span class="f-n" aria-hidden="true">2</span>
-                <p class="n-rule">A heading level is skipped <em>WCAG 1.3.1 · line 28</em></p>
-                <p class="n-why">The outline jumps from h1 to h3, so the structure is lost.</p>
-                <p class="n-diff"><span class="d-del">&lt;h3&gt;</span> <span class="arr" aria-hidden="true">→</span> <span class="d-add">&lt;h2&gt;</span></p>
-                <p class="n-verdict ok">✓ Fixed: passed all six checks</p>
+                <p class="n-rule">The headings skip a level</p>
+                <p class="n-why">People who jump from heading to heading get a page outline with a gap in it.</p>
+                <p class="n-diff">Fix: <span class="d-del">level 3</span> <span class="arr" aria-hidden="true">→</span> <span class="d-add">level 2</span> <em>WCAG 1.3.1</em></p>
+                <p class="n-verdict ok">✓ Fixed. It passed all six checks.</p>
               </li>
               <li class="finding" data-n="3" data-ok="0">
                 <span class="f-n" aria-hidden="true">3</span>
-                <p class="n-rule">The map has no text alternative <em>WCAG 1.1.1 · line 30</em></p>
-                <p class="n-why">Screen reader users never learn which plots are free.</p>
-                <p class="n-diff">tried <span class="d-add bad">alt="plot map"</span></p>
-                <p class="n-verdict no">✕ Rejected: it only restates the file name</p>
+                <p class="n-rule">The map has no description</p>
+                <p class="n-why">Someone who can't see the image never learns which plots are free.</p>
+                <p class="n-diff">A quick fix tried <span class="d-add bad">“plot map”</span>, copied from the file name. <em>WCAG 1.1.1</em></p>
+                <p class="n-verdict no">✕ Refused. A person has to describe what the map shows.</p>
               </li>
               <li class="finding" data-n="4" data-ok="1">
                 <span class="f-n" aria-hidden="true">4</span>
-                <p class="n-rule">The button has a misspelled role <em>WCAG 4.1.2 · line 36</em></p>
-                <p class="n-why">It is a div that is never announced as a button.</p>
-                <p class="n-diff"><span class="d-del">role="buton"</span> <span class="arr" aria-hidden="true">→</span> <span class="d-add">role="button"</span></p>
-                <p class="n-verdict ok">✓ Fixed: passed all six checks</p>
+                <p class="n-rule">The button isn't announced as a button</p>
+                <p class="n-why">Screen readers read “Join the waitlist” as plain text, so people don't know they can press it.</p>
+                <p class="n-diff">Fix: a typo in the code, <span class="d-del">buton</span> <span class="arr" aria-hidden="true">→</span> <span class="d-add">button</span> <em>WCAG 4.1.2</em></p>
+                <p class="n-verdict ok">✓ Fixed. It passed all six checks.</p>
               </li>
             </ol>
           </div>
@@ -207,22 +222,20 @@
 
 <section class="section" id="why" aria-labelledby="what-title">
   <div class="wrap">
-    <div class="section-head" data-reveal>
-      <p class="label">Why this tool</p>
-      <h2 id="what-title">A quiet checker is not a fixed page.</h2>
-      <p class="sub">Coding agents fix accessibility by the hundred, and most confirm it by re-running a checker. But hide the element, add a generic label or restate the file name, and the checker goes quiet. verifa11y keeps a fix only if it survives checks a silenced violation can't pass.</p>
+    <div class="section-head">
+      <h2 id="what-title">A checker can go quiet while the page stays broken.</h2>
+      <p class="sub">Coding agents write accessibility fixes in bulk and confirm them by re-running a checker. Hide the element, add a generic label or copy the file name into the alt text, and that checker reports nothing. <span translate="no">verifa11y</span> keeps a fix only after it passes checks that a hidden or faked fix fails.</p>
     </div>
     
-    <ul class="facts">
-      <li data-reveal><p class="fact-num">95.9%</p><p>of the top one million home pages had detected WCAG 2 failures.</p><a class="src" href="https://webaim.org/projects/million/">WebAIM Million, 2026</a></li>
-      <li data-reveal><p class="fact-num">28 Jun 2025</p><p>The European Accessibility Act applies across the EU.</p><a class="src" href="https://eur-lex.europa.eu/eli/dir/2019/882/oj">Directive (EU) 2019/882, Art. 31</a></li>
-      <li data-reveal><p class="fact-num">WCAG 2.1 AA</p><p>for US state and local government sites under ADA Title II, from April 2027 for large entities.</p><a class="src" href="https://www.ada.gov/resources/2024-03-08-web-rule/">U.S. DOJ, ADA Title II web rule</a></li>
+    <ul class="context">
+      <li><p><b>95.9%</b> of the top million home pages had WCAG 2 failures that software could detect.</p><a class="src" href="https://webaim.org/projects/million/">WebAIM Million, 2026</a></li>
+      <li><p>Since <b>28 June 2025</b>, the European Accessibility Act applies across the EU.</p><a class="src" href="https://eur-lex.europa.eu/eli/dir/2019/882/oj">Directive (EU) 2019/882, Art. 31</a></li>
+      <li><p>US state and local government sites must meet <b>WCAG 2.1 AA</b> under ADA Title II, from April 2027 for large entities.</p><a class="src" href="https://www.ada.gov/resources/2024-03-08-web-rule/">U.S. DOJ, ADA Title II web rule</a></li>
     </ul>
-    <div class="why-gap"></div>
-    <div class="panel" data-reveal>
+    <div class="panel">
       <div class="panel-head">
         <h3>What the verifier adds</h3>
-        <p>The naive fixer's patches (dev pages), judged by weaker verifiers. Green: what the full verifier keeps. Red: what it rejects.</p>
+        <p>We judged the naive fixer's patches on the dev pages with weaker verifiers. Green is what the full verifier keeps, red is what it rejects.</p>
       </div>
       <ul class="bars">
         <li><span class="b-label">No verifier</span><span class="b-track"><span class="b-ok" data-bar="naive.dev.verified" style="--v:403"></span><span class="b-bad" data-bar="naive.dev.rejected" style="--v:250"></span></span><span class="b-num"><b data-metric="naive.dev.applied">653</b> shipped · <b class="bad" data-metric="naive.dev.rejected">250</b> wrong</span></li>
@@ -237,10 +250,9 @@
 
 <section class="section" id="examples" aria-labelledby="examples-title">
   <div class="wrap">
-    <div class="section-head" data-reveal>
-      <p class="label">Examples</p>
-      <h2 id="examples-title">Six real fixes. Six verdicts.</h2>
-      <p class="sub">Taken word for word from the benchmark. Pick one and watch the checks run.</p>
+    <div class="section-head">
+      <h2 id="examples-title">Six patches from the benchmark, replayed</h2>
+      <p class="sub">Each patch and each verdict comes word for word from a benchmark run. Pick one to watch its checks.</p>
     </div>
     <div class="verdict-app">
       <div class="va-tabs" role="tablist" aria-label="Real patches from the benchmark" hidden>
@@ -355,8 +367,8 @@
       </div>
     </div>
     <div class="compare-block">
-      <h3 class="compare-title" data-reveal>Where it fits, and where it doesn't</h3>
-      <div class="table-wrap compare" role="region" tabindex="0" aria-labelledby="tbl-compare" data-reveal>
+      <h3 class="compare-title">Next to the tools you already use</h3>
+      <div class="table-wrap compare" role="region" tabindex="0" aria-labelledby="tbl-compare">
         <table>
           <caption id="tbl-compare" class="sr-only">verifa11y next to auditors and coding agents</caption>
           <thead><tr><th scope="col"><span class="sr-only">Capability</span></th><th scope="col"><span class="c-name">Auditors</span><span class="c-sub">axe, Lighthouse</span></th><th scope="col"><span class="c-name">A coding agent</span><span class="c-sub">on its own</span></th><th scope="col" class="us"><span class="c-name"><svg class="brand-mark" width="18" height="18" aria-hidden="true"><use href="#mark"/></svg>verifa11y</span><span class="c-sub">this project</span></th></tr></thead>
@@ -371,7 +383,7 @@
           </tbody>
         </table>
       </div>
-      <ul class="compare-cards" aria-label="verifa11y next to auditors and coding agents" data-reveal>
+      <ul class="compare-cards" aria-label="verifa11y next to auditors and coding agents">
         <li><p class="cc-q">Finds violations</p><dl><div class="cc-us"><dt>verifa11y</dt><dd><span class="y">Yes, to the line</span></dd></div><div><dt>Auditors</dt><dd><span class="y">Yes</span></dd></div><div><dt>Agent</dt><dd><span class="p">If it runs an auditor</span></dd></div></dl></li>
         <li><p class="cc-q">Writes the fix</p><dl><div class="cc-us"><dt>verifa11y</dt><dd><span class="y">Yes</span></dd></div><div><dt>Auditors</dt><dd><span class="n">No</span></dd></div><div><dt>Agent</dt><dd><span class="y">Yes</span></dd></div></dl></li>
         <li><p class="cc-q">Re-checks the fix in a real browser</p><dl><div class="cc-us"><dt>verifa11y</dt><dd><span class="y">Six checks</span></dd></div><div><dt>Auditors</dt><dd><span class="n">No</span></dd></div><div><dt>Agent</dt><dd><span class="p">Re-runs the auditor, at best</span></dd></div></dl></li>
@@ -386,12 +398,11 @@
 
 <section class="section" id="checks" aria-labelledby="checks-title">
   <div class="wrap">
-    <div class="section-head" data-reveal>
-      <p class="label">The verifier</p>
-      <h2 id="checks-title">Six gates. A fix has to clear every one.</h2>
-      <p class="sub">Each gate catches a way of making a violation disappear without fixing it. Every patch goes through all six, whoever wrote it, verifa11y's own codemods included.</p>
+    <div class="section-head">
+      <h2 id="checks-title">A patch has to pass six checks</h2>
+      <p class="sub">Each check catches one way to make a violation disappear without fixing it. <span translate="no">verifa11y</span> runs all six on every patch, its own codemods included.</p>
     </div>
-    <div class="gates g0" data-reveal>
+    <div class="gates g0">
       <div class="lanes" aria-hidden="true">
         <div class="lane lane-ok"><span class="token"><code>role="navigation"</code></span><span class="lane-end">verified</span></div>
         <div class="lane lane-no"><span class="token"><code>alt="plot map"</code></span><span class="lane-end">rejected at gate 3</span></div>
@@ -405,24 +416,19 @@
         <li class="gate"><span class="g-n">6</span><h3>Pixels and references</h3><p>Nothing outside the patch changes; every reference exists.</p><code class="g-ex">0.00% outside</code></li>
       </ol>
     </div>
-    <p class="limits" data-reveal><strong>What no gate can tell you:</strong> whether alt text describes what an image is for, whether a state is true, whether a colour fits your design, or the large part of WCAG that isn't machine-testable. Every patch still goes to a person.</p>
+    <p class="limits"><strong>What the checks can't judge.</strong> Whether alt text says what an image is for, whether a state is true, whether a colour fits your design. Most of WCAG needs a person, so read every patch before you apply it.</p>
   </div>
 </section>
 
 <section class="section" id="results" aria-labelledby="results-title">
   <div class="wrap">
-    <div class="section-head" data-reveal>
-      <p class="label">Results</p>
+    <div class="section-head">
       <h2 id="results-title">Measured, including where it looks bad.</h2>
       <p class="sub"><span data-metric="pages.all">95</span> pages, <span data-metric="pages.eval">73</span> of them held out. Precision is against the verifier, not a person, with 95% Wilson intervals.</p>
     </div>
-    <ul class="stats">
-      <li data-reveal><p class="big"><span data-metric="codemod.all.verified" data-count>154</span><span class="of">/<span data-metric="codemod.all.proposed">154</span></span></p><p>codemod fixes verified. Held out: <span data-metric="codemod.eval.verified">18</span>/<span data-metric="codemod.eval.proposed">18</span>, interval <span data-metric="codemod.eval.ci">[82.4–100]</span>. A small sample.</p></li>
-      <li data-reveal><p class="big" data-metric="naive.all.axeOnlyRejected" data-count>238</p><p>quick fixes that pass axe-core and that verifa11y rejects, from a deliberately naive fixer.</p></li>
-      <li data-reveal><p class="big muted">—</p><p>for a real model. Not measured yet, so not published.</p></li>
-    </ul>
+    <p class="results-lead">The codemods passed verification <span data-metric="codemod.all.verified">154</span> times out of <span data-metric="codemod.all.proposed">154</span>. On held-out pages that is <span data-metric="codemod.eval.verified">18</span> of <span data-metric="codemod.eval.proposed">18</span>, a small sample with an interval of <span data-metric="codemod.eval.ci">[82.4–100]</span>. A deliberately naive fixer wrote <span data-metric="naive.all.axeOnlyRejected">238</span> patches that pass axe-core and that <span translate="no">verifa11y</span> rejects. We haven't measured a real model yet, so this page shows no number for one.</p>
     <div class="results-grid">
-      <div class="table-wrap" role="region" tabindex="0" aria-labelledby="tbl-sets" data-reveal>
+      <div class="table-wrap" role="region" tabindex="0" aria-labelledby="tbl-sets">
         <table>
           <caption id="tbl-sets">Verified, by who wrote the patch</caption>
           <thead><tr><th scope="col">Written by</th><th scope="col">Pages</th><th scope="col" class="num">Verified</th><th scope="col">Precision</th></tr></thead>
@@ -434,9 +440,9 @@
           </tbody>
         </table>
       </div>
-      <div class="note" data-reveal>
-        <h3>Read the naive rows carefully</h3>
-        <p>The naive fixer gets more patches past the verifier than the codemods do, and many would fail a review: invented state, inline colour overrides, a live region deleted. None makes the page worse, which is what a verifier can prove. “Verified” is an upper bound, not a grade.</p>
+      <div class="note">
+        <h3>How to read the naive rows</h3>
+        <p>The naive fixer gets more patches past the verifier than the codemods do, and a reviewer would turn many of them down: invented state, inline colour overrides, a deleted live region. The verifier proves that none of them makes the page worse. Read “verified” as an upper bound on quality.</p>
         <p><a href="https://github.com/mateogsilvaa/verifa11y/blob/main/bench/baselines/naive/report.md">Every patch and verdict →</a></p>
       </div>
     </div>
@@ -445,35 +451,33 @@
 
 <section class="section" id="faq" aria-labelledby="faq-title">
   <div class="wrap faq">
-    <div data-reveal>
-      <p class="label">FAQ</p>
+    <div>
       <h2 id="faq-title">Before you try it.</h2>
     </div>
-    <div class="faq-list" data-reveal>
-      <details><summary>Does verifa11y make my site accessible?</summary><p>No. It fixes specific, machine-detectable violations and proves those fixes didn't make anything worse. Most of WCAG can only be judged by a person. Treat it as a fast, careful first pass, never as a certificate.</p></details>
+    <div class="faq-list">
+      <details><summary>Does verifa11y make my site accessible?</summary><p>No. It fixes specific, machine-detectable violations and proves those fixes didn't make anything worse. Most of WCAG can only be judged by a person. Use it as a first pass you still review.</p></details>
       <details><summary>Does my code leave my machine?</summary><p>Only if you configure a model or agent for the fixes that need judgment; then the page goes to whatever you configured. No telemetry, no account, no server. Pages render offline.</p></details>
       <details><summary>Do I need an AI model?</summary><p>No. Codemods fix what can be proven from the markup (misspelled roles, invalid ARIA values, heading levels, simple labels) and the rest is reported as skipped. With a model it also attempts alt text, contrast and widget state.</p></details>
       <details><summary>Which rules does it patch?</summary><p><code>image-alt</code>, <code>label</code>, <code>heading-order</code>, <code>aria-allowed-attr</code>, <code>aria-required-attr</code>, <code>aria-valid-attr-value</code>, <code>aria-roles</code> and <code>color-contrast</code>. The verifier checks every WCAG 2.x A/AA rule axe-core has.</p></details>
       <details><summary>What about React, Vue or a live site?</summary><p>Patching works on static HTML today; frameworks are on the roadmap. <code>verifa11y site</code> audits a live site but only reports: a live page has no source file to patch.</p></details>
       <details><summary>How is “verified” different from “passes axe”?</summary><p>Passing axe means the rule stopped reporting. Verified also means nothing new broke, nothing was hidden, no name became meaningless, and the accessibility tree, focus order and pixels still agree. On the benchmark, <span data-metric="naive.all.axeOnlyRejected">238</span> patches pass axe and fail the rest.</p></details>
-      <details><summary>Is it free?</summary><p>Yes. Apache-2.0, on GitHub. Bug reports and contributions welcome.</p></details>
+      <details><summary>Is it free?</summary><p>Yes. It is Apache-2.0 and lives on GitHub, where you can report bugs and send changes.</p></details>
     </div>
   </div>
 </section>
 
 <section class="section install-section" id="install" aria-labelledby="install-title">
   <div class="wrap">
-    <div class="section-head" data-reveal>
-      <p class="label">Install</p>
+    <div class="section-head">
       <h2 id="install-title">Pick where you work.</h2>
       <p class="sub">Node.js 20 or later. No model needed: verifa11y applies the fixes it can prove and tells you why it skipped the rest.</p>
     </div>
-    <div class="guide docs" data-reveal>
+    <div class="guide docs">
       <div class="docs-nav">
         <div class="docs-search" hidden>
           <label for="tool-search" class="sr-only">Search tools</label>
           <svg aria-hidden="true" viewBox="0 0 20 20"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M13 13l4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-          <input id="tool-search" type="search" placeholder="Search tools" autocomplete="off">
+          <input id="tool-search" type="search" placeholder="Search tools…" autocomplete="off">
         </div>
         <p class="no-match" role="status"></p>
         <fieldset class="tool-group">
@@ -736,7 +740,7 @@ jobs:
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        <a class="brand" href="#top"><svg class="brand-mark" width="26" height="26" aria-hidden="true"><use href="#mark"/></svg><span>verifa<b>11</b>y</span></a>
+        <a class="brand" href="#top"><svg class="brand-mark" width="26" height="26" aria-hidden="true"><use href="#mark"/></svg><span translate="no">verifa<b>11</b>y</span></a>
         <p>Accessibility fixes that prove themselves.</p>
         <a class="btn btn-light btn-sm" href="#install">Install</a>
       </div>
@@ -757,7 +761,7 @@ jobs:
       <p class="foot-check"><svg class="brand-mark" width="16" height="16" aria-hidden="true"><use href="#mark"/></svg> This page is checked by verifa11y and axe-core before every deploy. No cookies, no analytics, no third-party requests.</p>
       <p>Apache-2.0 · verifa11y does not guarantee WCAG conformance.</p>
     </div>
-    <p class="foot-word" aria-hidden="true">verifa11y</p>
+    <p class="foot-word" aria-hidden="true" translate="no">verifa11y</p>
   </div>
 </footer>
 
