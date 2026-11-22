@@ -1,0 +1,27 @@
+name: Feature request
+description: Suggest something verifa11y should do
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the idea. For a new rule or a new codemod case, use the "Rule proposal" template instead.
+        A change that lets more patches through needs a test showing those patches are correct.
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What are you trying to do, and what gets in the way today?
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: What you would like
+      description: How you imagine it working. A command, an option or an example of the output helps.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What you tried instead

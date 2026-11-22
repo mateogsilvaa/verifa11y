@@ -28,6 +28,7 @@
     "demo": "npm run build && tsx scripts/demo.ts",
     "demo:record": "npm run build && node scripts/record-demo.mjs",
     "mcp": "node packages/mcp/dist/server.js",
+    "brand:assets": "node scripts/brand-assets.mjs",
     "site:serve": "node scripts/site.mjs serve",
     "check:site": "npm run build && node scripts/site.mjs check"
   },

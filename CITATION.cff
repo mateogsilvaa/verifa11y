@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use verifa11y or its benchmark in your work, please cite it as below."
+title: "verifa11y"
+abstract: >-
+  An open-source HTML accessibility checker that writes a patch for each WCAG violation it finds, applies it to a copy
+  of the page, re-checks it in a real browser with axe-core, the accessibility tree, focus order and pixel
+  comparison, and keeps only the patches that hold.
+type: software
+authors:
+  - name: "mateogsilvaa and the verifa11y contributors"
+repository-code: "https://github.com/mateogsilvaa/verifa11y"
+url: "https://mateogsilvaa.github.io/verifa11y/"
+license: Apache-2.0
+version: 0.4.1
+date-released: 2026-11-20
+keywords:
+  - accessibility
+  - WCAG
+  - axe-core
+  - HTML
+  - automated remediation
+  - Model Context Protocol

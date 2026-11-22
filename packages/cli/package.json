@@ -1,7 +1,7 @@
 {
   "name": "verifa11y",
   "version": "0.4.1",
-  "description": "Fix accessibility violations in static HTML and keep only the patches a verifier proves: axe-core, accessibility tree, focus order and pixels. Not a conformance audit.",
+  "description": "HTML accessibility checker that also fixes WCAG violations, and keeps only the patches a verifier proves: axe-core, accessibility tree, focus order and pixels. Not a conformance audit.",
   "license": "Apache-2.0",
   "author": "mateogsilvaa",
   "homepage": "https://github.com/mateogsilvaa/verifa11y#readme",
@@ -22,7 +22,15 @@
     "codemod",
     "verifier",
     "html",
-    "cli"
+    "cli",
+    "accessibility-checker",
+    "html-accessibility",
+    "accessibility-testing",
+    "wcag-fixer",
+    "playwright",
+    "mcp",
+    "ai-agents",
+    "github-action"
   ],
   "type": "module",
   "bin": {

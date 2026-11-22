@@ -1,7 +1,7 @@
 {
   "name": "verifa11y-mcp",
   "version": "0.4.1",
-  "description": "MCP server for verifa11y: a verified accessibility fixer for static HTML (axe-core plus accessibility-tree, focus and visual checks). Not a conformance audit.",
+  "description": "MCP server for verifa11y: an HTML accessibility checker and verified fixer for AI agents (axe-core plus accessibility-tree, focus and visual checks). Not a conformance audit.",
   "license": "Apache-2.0",
   "author": "mateogsilvaa",
   "homepage": "https://github.com/mateogsilvaa/verifa11y#readme",
@@ -24,7 +24,15 @@
     "html",
     "mcp",
     "model-context-protocol",
-    "agents"
+    "agents",
+    "mcp-server",
+    "accessibility-checker",
+    "html-accessibility",
+    "accessibility-testing",
+    "ai-agents",
+    "claude-code",
+    "cursor",
+    "playwright"
   ],
   "type": "module",
   "bin": {

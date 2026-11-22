@@ -1,0 +1,19 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      dev-dependencies:
+        dependency-type: development
+    ignore:
+      # Pinned on purpose: every benchmark report records these versions, and a benchmark is only comparable with a run
+      # on the same engines. Bump them by hand, with a new benchmark run (see CONTRIBUTING.md).
+      - dependency-name: axe-core
+      - dependency-name: playwright
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

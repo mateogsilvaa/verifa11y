@@ -1,1 +1,8 @@
 blank_issues_enabled: true
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/mateogsilvaa/verifa11y/security/advisories/new
+    about: Report it privately. Please do not open a public issue.
+  - name: Read the docs first
+    url: https://github.com/mateogsilvaa/verifa11y/tree/main/docs
+    about: How it works, the verifier, the MCP server and the GitHub Action.

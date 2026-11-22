@@ -107,7 +107,7 @@ to send it to.
 
 | Command | Status in this repository |
 |---|---|
-| `ollama run qwen3:8b --think=false` | Tested end to end, offline ([local benchmark](../bench/local-qwen3-8b/report.md)). |
+| `ollama run qwen3:8b --think=false` | Tested end to end, offline. |
 | `claude -p` | Protocol tested; the CLI must be signed in. |
 | `codex exec -`, `llm -m <model>`, others | Not tested here. Anything that reads stdin and prints the answer works. |
 | a script of yours | See [`packages/core/test/fixtures/agents/alt-agent.mjs`](../packages/core/test/fixtures/agents/alt-agent.mjs). |
