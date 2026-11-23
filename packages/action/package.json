@@ -1,6 +1,6 @@
 {
   "name": "verifa11y-action",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "private": true,
   "description": "The verifa11y GitHub Action: audits the HTML a pull request changes and posts verified fixes as suggestions. Not a conformance audit.",
   "license": "Apache-2.0",
@@ -17,6 +17,6 @@
     "node": ">=20"
   },
   "dependencies": {
-    "verifa11y-core": "0.4.1"
+    "verifa11y-core": "0.4.2"
   }
 }

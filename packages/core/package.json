@@ -1,6 +1,6 @@
 {
   "name": "verifa11y-core",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "verifa11y engine: axe-core audit, source mapping, patch validation, the verifier, the Rule plugin API and the optional LLM tier.",
   "license": "Apache-2.0",
   "author": "mateogsilvaa",

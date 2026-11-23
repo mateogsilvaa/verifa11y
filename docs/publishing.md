@@ -14,17 +14,35 @@ dependencies first.
 
 ## Once
 
-- An npm account with two-factor authentication on (npm requires 2FA to publish).
+- An npm account with **two-factor authentication on, for "Authorization and writes"** (npmjs.com, Account settings,
+  Two-Factor Authentication). Without it `npm publish` fails with `403 Forbidden ... Two-factor authentication ... is
+  required`. Do not work around that with a token that bypasses 2FA: npm is restricting those.
 - `npm login` in this shell.
 
 ## Each release
 
-From a clean checkout of the release tag, at the repository root:
+Replace `X.Y.Z` with the version.
+
+**1. Prepare it on `main`.**
+
+- Set `"version": "X.Y.Z"` in the root `package.json` and in all five packages, and the exact pins between them
+  (`verifa11y-core`, `verifa11y-rules-core`). Then `npm install --package-lock-only` refreshes the lockfile.
+- Add the entry to `CHANGELOG.md`, write `docs/releases/vX.Y.Z.md`, and update `version` and `date-released` in
+  `CITATION.cff`.
+- Commit and push to `main`, then tag that commit and push the tag:
 
 ```sh
-git switch --detach v0.4.1      # the tag being released
+git tag vX.Y.Z
+git push origin vX.Y.Z
+```
+
+**2. Publish from a clean checkout of the tag**, at the repository root:
+
+```sh
+git switch --detach vX.Y.Z
 npm ci
-npm test                        # must pass
+npx playwright install chromium-headless-shell   # the tests render pages in a real browser
+npm test                                         # must pass
 npm run build
 npm publish -w packages/core
 npm publish -w packages/rules-core
@@ -32,11 +50,23 @@ npm publish -w packages/cli
 npm publish -w packages/mcp
 ```
 
+The browser install is needed once per machine; without it about 100 tests fail with "Chromium is not installed".
+npm asks you to confirm each publish in the browser (or for a one-time code). When you finish, `git switch main`.
+
 `npm publish` runs each package's `prepack`, which copies `LICENSE` and `NOTICE` into the package and refuses to
 publish a package whose `dist/` is missing or older than its `src/`. Each package publishes `dist/`, `src/` (for
 source maps), its README, `LICENSE` and `NOTICE`; no tests and no corpus.
 
 To see exactly what would be published without publishing: `npm pack -w packages/cli --dry-run`.
+
+**3. Create the GitHub release.**
+
+1. Copy the notes without their first line, which becomes the title:
+   `(Get-Content docs\releases\vX.Y.Z.md | Select-Object -Skip 2) | Set-Clipboard` (PowerShell).
+2. Open https://github.com/mateogsilvaa/verifa11y/releases/new and choose the existing tag `vX.Y.Z`.
+3. Title: `verifa11y X.Y.Z`. Paste the notes as the description.
+4. Tick "Set as the latest release" for the newest version only. Leave the pre-release and Marketplace boxes empty.
+5. Publish release.
 
 ## Check
 

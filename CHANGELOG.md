@@ -3,6 +3,26 @@
 All notable changes. The project follows semver; while it is 0.x, minor versions may break the experimental Rule
 API (ADR 0006).
 
+## 0.4.2 (2026-11-23)
+
+Documentation and packaging. No change to auditing, patching or verification.
+
+### Added
+- **Website**: https://mateogsilvaa.github.io/verifa11y/ (checked with axe-core before every deploy).
+- `SECURITY.md`, `CITATION.cff`, a Dependabot configuration (axe-core and Playwright stay pinned, because every
+  benchmark report records their versions), `CODEOWNERS` and a feature request template.
+
+### Changed
+- **README is a landing page**: banner, quick start, flow diagram, the six checks, results and comparison. The detailed
+  sections moved word for word into `docs/` (how it works, the verifier, install and command line, MCP server, site mode,
+  packages, benchmark, limitations), with an index in `docs/README.md`.
+- **npm pages**: the `verifa11y` README has a banner and links to the new docs, and `verifa11y` and `verifa11y-mcp` have
+  fuller descriptions and keywords.
+- The GitHub Action's cache step uses `actions/cache@v6`; the project's own workflows use newer actions.
+- `docs/publishing.md` lists the browser install the test suite needs, the two-factor requirement, and the whole
+  release sequence including the tag and the GitHub release.
+- `docs/agents.md`: dropped a link to a benchmark report that is not in the repository.
+
 ## 0.4.1 (2026-11-20)
 
 Ready for npm. No change to auditing, patching or verification.

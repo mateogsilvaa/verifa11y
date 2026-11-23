@@ -1,7 +1,7 @@
 {
   "name": "verifa11y-monorepo",
   "private": true,
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Audit HTML for accessibility violations, generate a minimal patch per violation, and keep only the patches a re-audit proves correct.",
   "license": "Apache-2.0",
   "type": "module",

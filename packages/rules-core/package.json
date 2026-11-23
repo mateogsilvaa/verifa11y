@@ -1,6 +1,6 @@
 {
   "name": "verifa11y-rules-core",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "The core verifa11y rule set: image-alt, label, heading-order, ARIA attribute and role rules, color-contrast. Tier-0 rules ship deterministic codemods.",
   "license": "Apache-2.0",
   "author": "mateogsilvaa",
@@ -44,7 +44,7 @@
     "node": ">=20"
   },
   "dependencies": {
-    "verifa11y-core": "0.4.1"
+    "verifa11y-core": "0.4.2"
   },
   "scripts": {
     "prepack": "node ../../scripts/prepack.mjs"

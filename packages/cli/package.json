@@ -1,6 +1,6 @@
 {
   "name": "verifa11y",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "HTML accessibility checker that also fixes WCAG violations, and keeps only the patches a verifier proves: axe-core, accessibility tree, focus order and pixels. Not a conformance audit.",
   "license": "Apache-2.0",
   "author": "mateogsilvaa",
@@ -46,8 +46,8 @@
     "node": ">=20"
   },
   "dependencies": {
-    "verifa11y-core": "0.4.1",
-    "verifa11y-rules-core": "0.4.1",
+    "verifa11y-core": "0.4.2",
+    "verifa11y-rules-core": "0.4.2",
     "commander": "15.1.0"
   },
   "scripts": {
