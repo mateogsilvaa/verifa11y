@@ -3,6 +3,23 @@
 All notable changes. The project follows semver; while it is 0.x, minor versions may break the experimental Rule
 API (ADR 0006).
 
+## 0.4.3 (2026-11-24)
+
+Installation and patch fixes. No change to auditing or verification.
+
+### Fixed
+- **`npx verifa11y` and `npx verifa11y-mcp` inside a clone** failed with "command not found", even after a build: npm
+  links executables at install time, before `dist/` exists. The entry points are now committed files in `bin/`, which
+  also say what to run when the checkout is not built or Node.js is too old.
+- **Patches made in a subdirectory of a repository were never applied**: `git apply` skipped them silently and exited 0.
+  Patch paths are now relative to the repository root, and the suggested command works from the current directory
+  (command line and MCP server).
+- Clearer errors for a missing file, a directory, a URL passed to `audit`, and a missing `findings.json`.
+
+### Changed
+- `docs/mcp.md`: install the browser before adding the server, because a first start on a cold npm cache is slow.
+- New in `verifa11y-core`: `gitRoot` and `applyCommand`. `toPatchPath` defaults to the repository root.
+
 ## 0.4.2 (2026-11-23)
 
 Documentation and packaging. No change to auditing, patching or verification.

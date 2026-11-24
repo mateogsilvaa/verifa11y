@@ -1,6 +1,6 @@
 {
   "name": "verifa11y-mcp",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "MCP server for verifa11y: an HTML accessibility checker and verified fixer for AI agents (axe-core plus accessibility-tree, focus and visual checks). Not a conformance audit.",
   "license": "Apache-2.0",
   "author": "mateogsilvaa",
@@ -36,7 +36,7 @@
   ],
   "type": "module",
   "bin": {
-    "verifa11y-mcp": "dist/server.js"
+    "verifa11y-mcp": "bin/verifa11y-mcp.js"
   },
   "main": "./dist/index.js",
   "exports": {
@@ -44,6 +44,7 @@
     "./package.json": "./package.json"
   },
   "files": [
+    "bin",
     "dist",
     "src",
     "LICENSE",
@@ -53,8 +54,8 @@
     "node": ">=20"
   },
   "dependencies": {
-    "verifa11y-core": "0.4.2",
-    "verifa11y-rules-core": "0.4.2",
+    "verifa11y-core": "0.4.3",
+    "verifa11y-rules-core": "0.4.3",
     "zod": "4.6.7",
     "@modelcontextprotocol/server": "2.4.0"
   },

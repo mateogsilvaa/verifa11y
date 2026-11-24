@@ -2,12 +2,12 @@
 // and --strict must keep suspicious patches out of it.
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { copyFile, mkdtemp, readFile, writeFile } from "node:fs/promises";
+import { copyFile, mkdir, mkdtemp, readFile, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { after, describe, it } from "node:test";
 import { fileURLToPath } from "node:url";
-import { auditSource, closeBrowser, combine, gitPatch, limiter, processPage, type Generator, type PatchOutcome } from "verifa11y-core";
+import { auditSource, closeBrowser, applyCommand, combine, gitPatch, toPatchPath, limiter, processPage, type Generator, type PatchOutcome } from "verifa11y-core";
 import { createCoreRegistry } from "verifa11y-rules-core";
 
 const registry = createCoreRegistry();
@@ -29,6 +29,22 @@ async function repoWith(name: string, source: string, crlf: boolean) {
 }
 
 describe("git patch output", () => {
+  it("applies from a subdirectory of the repository (git skips wrong paths silently)", async () => {
+    const dir = await mkdtemp(path.join(os.tmpdir(), "verifa11y git sub-"));
+    git(dir, "init", "-q");
+    await mkdir(path.join(dir, "web"));
+    const file = path.join(dir, "web", "index.html");
+    await writeFile(file, "<p>a</p>\n");
+    const patch = path.join(dir, "web", "x.patch");
+    assert.equal(toPatchPath(file), "web/index.html");
+    await writeFile(patch, gitPatch([{ path: toPatchPath(file), before: "<p>a</p>\n", after: "<p>b</p>\n" }]));
+    git(path.join(dir, "web"), "apply", "x.patch");
+    assert.equal((await readFile(file, "utf8")).trim(), "<p>b</p>");
+    assert.equal(applyCommand(patch, file, dir), "git apply web/x.patch");
+    assert.match(applyCommand(patch, file, path.join(dir, "web")), /^git -C ".+" apply ".+x\.patch"$/);
+  });
+
+
   for (const [page, crlf] of [["02-newsletter-labels.html", false], ["02-newsletter-labels.html", true]] as const) {
     it(`applies with git apply: ${page}${crlf ? " (CRLF copy)" : ""}`, async () => {
       const source = fileURLToPath(new URL(`../../../corpus/handwritten/${page}`, import.meta.url));

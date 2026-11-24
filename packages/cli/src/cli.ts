@@ -27,6 +27,7 @@ import {
   metricsFile,
   processPage,
   renderReport,
+  applyCommand,
   toPatchPath,
   verifyPatch,
   writeJson,
@@ -259,7 +260,7 @@ fixOpts(
       const included = pages.flatMap((p) => p.outcomes.filter((x) => x.included));
       const sus = included.filter((x) => x.verification.status === "rejected_suspicious").length;
       console.log(
-        `wrote ${path.join(o.out, "verifa11y.patch")}: ${included.length} change(s)${sus ? `, ${sus} marked suspicious (use --strict to leave them out)` : ""}. Apply with: git apply ${path.join(o.out, "verifa11y.patch")}`,
+        `wrote ${path.join(o.out, "verifa11y.patch")}: ${included.length} change(s)${sus ? `, ${sus} marked suspicious (use --strict to leave them out)` : ""}. Apply with: ${applyCommand(path.join(o.out, "verifa11y.patch"), pages[0]?.file ?? o.out)}`,
       );
     }
     if (store) {
@@ -501,10 +502,22 @@ program
     if (code !== 0) throw new Error(`browser install failed (exit code ${code})`);
   });
 
+/** Filesystem errors, in the user's terms. */
+function explain(err: NodeJS.ErrnoException): string {
+  const given = process.argv.slice(2).find((a) => /^https?:\/\//i.test(a));
+  if (err.code === "ENOENT" && given) return `this command reads HTML files. To audit a live site: npx verifa11y site ${given}`;
+  if (err.code === "ENOENT" && err.path) {
+    const hint = err.path.endsWith("findings.json") ? "\nCreate it first with: npx verifa11y audit page.html --out findings.json" : "";
+    return `file not found: ${err.path}${hint}`;
+  }
+  if (err.code === "EISDIR") return "expected an HTML file, got a directory. Pass one .html file.";
+  return err.message;
+}
+
 program
   .parseAsync()
   .catch((err: Error) => {
-    console.error(`verifa11y: ${err.message}`);
+    console.error(`verifa11y: ${explain(err)}`);
     process.exitCode = 1;
   })
   .finally(() => closeBrowser());

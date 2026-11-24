@@ -48,7 +48,7 @@ export {
   type ProcessOptions,
 } from "./pipeline.js";
 export { CommandGenerator, extractPatch, type CommandInput, type CommandOptions } from "./command.js";
-export { gitPatch, toPatchPath, type FileChange } from "./patchfile.js";
+export { applyCommand, gitPatch, gitRoot, toPatchPath, type FileChange } from "./patchfile.js";
 export {
   corpusSetOf,
   EVAL_DIR,

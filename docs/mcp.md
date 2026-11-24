@@ -34,4 +34,5 @@ claude mcp add verifa11y -- npx -y verifa11y-mcp --root .
 }
 ```
 
-Install the browser once with `npx verifa11y-mcp --install-browser`. (The JSON form goes in Claude Desktop's `claude_desktop_config.json`, Cursor's `.cursor/mcp.json`, and similar.)
+On a cold npm cache the first start downloads the package and can exceed a client's startup timeout, so install
+the browser first: it also warms the cache. Do it once with `npx verifa11y-mcp --install-browser`. (The JSON form goes in Claude Desktop's `claude_desktop_config.json`, Cursor's `.cursor/mcp.json`, and similar.)

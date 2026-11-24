@@ -25,7 +25,10 @@ import {
   auditSource,
   countBy,
   engineVersions,
+  applyCommand,
+  gitRoot,
   gitPatch,
+  toPatchPath,
   limiter,
   probeOptions,
   processPage,
@@ -384,7 +387,7 @@ export function createServer(opts: ServerOptions = {}): McpServer {
         );
         const { dir, runId } = await runDir(a.out ?? ".verifa11y");
         const changed = page.combined !== null && page.combined !== src;
-        const patch = changed ? gitPatch([{ path: rel(file), before: src, after: page.combined! }]) : "";
+        const patch = changed ? gitPatch([{ path: toPatchPath(file, gitRoot(file) ?? roots[0]!), before: src, after: page.combined! }]) : "";
         const patchFile = path.join(dir, "verifa11y.patch");
         await writeFile(patchFile, patch, "utf8");
         const results = page.outcomes.map((o) => ({
@@ -403,7 +406,7 @@ export function createServer(opts: ServerOptions = {}): McpServer {
           file: rel(file),
           runId,
           patchPath: rel(patchFile),
-          applyWith: `git apply ${rel(patchFile)}`,
+          applyWith: applyCommand(patchFile, file, roots[0]!),
           mode,
           strict,
           counts: countBy(page.outcomes.map((o) => o.verification.status)),

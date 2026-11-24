@@ -331,7 +331,7 @@ export async function writeJson(file: string, data: unknown): Promise<void> {
 }
 
 /** The git-apply patch for a page (empty string when nothing is included). */
-export function pagePatch(page: PageOutcome, root = process.cwd()): string {
+export function pagePatch(page: PageOutcome, root?: string): string {
   if (page.combined === null) return "";
   return gitPatch([{ path: toPatchPath(page.file, root), before: page.src, after: page.combined }]);
 }
